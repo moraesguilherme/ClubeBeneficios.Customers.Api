@@ -1,0 +1,31 @@
+using ClubeBeneficios.Customers.Domain.Dtos.Admin;
+using ClubeBeneficios.Customers.Domain.Dtos.Common;
+using ClubeBeneficios.Customers.Domain.Dtos.Filters;
+using ClubeBeneficios.Customers.Domain.Dtos.Requests;
+
+namespace ClubeBeneficios.Customers.Domain.Services;
+
+public interface IPartnerCustomerAdminService
+{
+    Task<PagedResultDto<PartnerCustomerAdminListItemDto>> SearchPagedAsync(PartnerCustomerAdminFilterDto filter, CancellationToken cancellationToken = default);
+    Task<PartnerCustomerAdminDashboardDto> GetDashboardSummaryAsync(CancellationToken cancellationToken = default);
+    Task<IReadOnlyCollection<FilterOptionDto>> GetFilterOptionsAsync(CancellationToken cancellationToken = default);
+    Task<IReadOnlyCollection<PartnerOptionDto>> GetPartnerFilterOptionsAsync(CancellationToken cancellationToken = default);
+
+    Task<PartnerCustomerAdminDetailsDto?> GetByIdAsync(Guid id, CancellationToken cancellationToken = default);
+    Task<Guid> CreateAsync(CreatePartnerCustomerAdminRequest request, CancellationToken cancellationToken = default);
+    Task<bool> UpdateAsync(Guid id, UpdatePartnerCustomerAdminRequest request, CancellationToken cancellationToken = default);
+
+    Task<IReadOnlyCollection<PetDto>> GetPetsAsync(Guid partnerCustomerId, CancellationToken cancellationToken = default);
+    Task<Guid> AddPetAsync(Guid partnerCustomerId, CreatePetRequest request, CancellationToken cancellationToken = default);
+    Task<bool> UpdatePetAsync(Guid partnerCustomerId, Guid petId, UpdatePetRequest request, CancellationToken cancellationToken = default);
+
+    Task<IReadOnlyCollection<DocumentDto>> GetDocumentsAsync(Guid partnerCustomerId, CancellationToken cancellationToken = default);
+    Task<Guid> AddDocumentAsync(Guid partnerCustomerId, AddDocumentRequest request, CancellationToken cancellationToken = default);
+
+    Task<IReadOnlyCollection<NoteDto>> GetNotesAsync(Guid partnerCustomerId, CancellationToken cancellationToken = default);
+    Task<Guid> AddNoteAsync(Guid partnerCustomerId, AddNoteRequest request, CancellationToken cancellationToken = default);
+
+    Task<IReadOnlyCollection<StatusHistoryDto>> GetStatusHistoryAsync(Guid partnerCustomerId, CancellationToken cancellationToken = default);
+    Task<bool> UpdateStatusAsync(Guid partnerCustomerId, UpdatePartnerCustomerStatusRequest request, CancellationToken cancellationToken = default);
+}
