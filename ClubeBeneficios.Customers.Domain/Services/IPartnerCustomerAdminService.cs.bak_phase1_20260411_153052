@@ -1,4 +1,4 @@
-﻿using ClubeBeneficios.Customers.Domain.Dtos.Admin;
+using ClubeBeneficios.Customers.Domain.Dtos.Admin;
 using ClubeBeneficios.Customers.Domain.Dtos.Common;
 using ClubeBeneficios.Customers.Domain.Dtos.Filters;
 using ClubeBeneficios.Customers.Domain.Dtos.Requests;
@@ -28,12 +28,4 @@ public interface IPartnerCustomerAdminService
 
     Task<IReadOnlyCollection<StatusHistoryDto>> GetStatusHistoryAsync(Guid partnerCustomerId, CancellationToken cancellationToken = default);
     Task<bool> UpdateStatusAsync(Guid partnerCustomerId, UpdatePartnerCustomerStatusRequest request, CancellationToken cancellationToken = default);
-    Task<bool> SubmitReviewAsync(Guid partnerCustomerId, SubmitPartnerCustomerReviewRequest request, CancellationToken cancellationToken = default);
-    Task<bool> ApproveReviewAsync(Guid partnerCustomerId, ApprovePartnerCustomerReviewRequest request, CancellationToken cancellationToken = default);
-    Task<bool> RejectReviewAsync(Guid partnerCustomerId, RejectPartnerCustomerReviewRequest request, CancellationToken cancellationToken = default);
-    Task<bool> RequestAdjustmentsAsync(Guid partnerCustomerId, RequestPartnerCustomerAdjustmentsRequest request, CancellationToken cancellationToken = default);
-    Task<ConvertPartnerCustomerResponse?> ConvertToCustomerAsync(
-        Guid partnerCustomerId,
-        ConvertPartnerCustomerRequest request,
-        CancellationToken cancellationToken = default);
 }

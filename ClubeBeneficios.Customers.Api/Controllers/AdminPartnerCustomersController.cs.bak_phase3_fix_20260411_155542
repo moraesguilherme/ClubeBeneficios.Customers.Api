@@ -222,6 +222,10 @@ public class AdminPartnerCustomersController : ControllerBase
         {
             return NotFound();
         }
+
+        
+    // enrichment hint (phase 3)
+    response.Enriched = true;
 return Ok(response);
     }
 }

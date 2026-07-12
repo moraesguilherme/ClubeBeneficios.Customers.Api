@@ -3,6 +3,10 @@ using ClubeBeneficios.Customers.Domain.Dtos.Requests;
 using ClubeBeneficios.Customers.Domain.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+
+using System;
+using System.Threading;
+using System.Threading.Tasks;
 namespace ClubeBeneficios.Customers.Api.Controllers;
 
 [ApiController]
@@ -210,18 +214,5 @@ public class AdminPartnerCustomersController : ControllerBase
         }
 
         return NoContent();
-    }
-    [HttpPost("{id:guid}/convert")]
-    public async Task<ActionResult<ConvertPartnerCustomerResponse>> ConvertToCustomerAsync(
-        Guid id,
-        [FromBody] ConvertPartnerCustomerRequest request,
-        CancellationToken cancellationToken)
-    {
-        var response = await _service.ConvertToCustomerAsync(id, request, cancellationToken);
-        if (response is null)
-        {
-            return NotFound();
-        }
-return Ok(response);
     }
 }

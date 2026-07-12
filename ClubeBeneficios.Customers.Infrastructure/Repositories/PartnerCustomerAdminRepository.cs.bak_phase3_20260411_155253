@@ -1,4 +1,4 @@
-﻿using ClubeBeneficios.Customers.Domain.Dtos.Admin;
+using ClubeBeneficios.Customers.Domain.Dtos.Admin;
 using ClubeBeneficios.Customers.Domain.Dtos.Common;
 using ClubeBeneficios.Customers.Domain.Dtos.Filters;
 using ClubeBeneficios.Customers.Domain.Dtos.Requests;

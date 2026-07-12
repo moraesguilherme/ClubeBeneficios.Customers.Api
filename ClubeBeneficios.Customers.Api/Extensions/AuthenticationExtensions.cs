@@ -16,7 +16,7 @@ public static class AuthenticationExtensions
 
         if (jwtSettings is null || string.IsNullOrWhiteSpace(jwtSettings.SecretKey))
         {
-            throw new InvalidOperationException("A configuraÃ§Ã£o JWT nÃ£o foi encontrada ou estÃ¡ invÃ¡lida.");
+            throw new InvalidOperationException("A configuração JWT nÃ£o foi encontrada ou está¡ inválida.");
         }
 
         var key = Encoding.UTF8.GetBytes(jwtSettings.SecretKey);

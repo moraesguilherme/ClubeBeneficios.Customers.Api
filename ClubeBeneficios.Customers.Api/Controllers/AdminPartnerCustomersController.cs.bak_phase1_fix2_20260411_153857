@@ -1,8 +1,9 @@
-﻿using ClubeBeneficios.Customers.Domain.Dtos.Filters;
+using ClubeBeneficios.Customers.Domain.Dtos.Filters;
 using ClubeBeneficios.Customers.Domain.Dtos.Requests;
 using ClubeBeneficios.Customers.Domain.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+
 namespace ClubeBeneficios.Customers.Api.Controllers;
 
 [ApiController]
@@ -151,77 +152,5 @@ public class AdminPartnerCustomersController : ControllerBase
         }
 
         return NoContent();
-    }
-    [HttpPost("{id:guid}/review/submit")]
-    public async Task<IActionResult> SubmitReviewAsync(
-        Guid id,
-        [FromBody] SubmitPartnerCustomerReviewRequest request,
-        CancellationToken cancellationToken)
-    {
-        var updated = await _service.SubmitReviewAsync(id, request, cancellationToken);
-        if (!updated)
-        {
-            return NotFound();
-        }
-
-        return NoContent();
-    }
-
-    [HttpPost("{id:guid}/review/approve")]
-    public async Task<IActionResult> ApproveReviewAsync(
-        Guid id,
-        [FromBody] ApprovePartnerCustomerReviewRequest request,
-        CancellationToken cancellationToken)
-    {
-        var updated = await _service.ApproveReviewAsync(id, request, cancellationToken);
-        if (!updated)
-        {
-            return NotFound();
-        }
-
-        return NoContent();
-    }
-
-    [HttpPost("{id:guid}/review/reject")]
-    public async Task<IActionResult> RejectReviewAsync(
-        Guid id,
-        [FromBody] RejectPartnerCustomerReviewRequest request,
-        CancellationToken cancellationToken)
-    {
-        var updated = await _service.RejectReviewAsync(id, request, cancellationToken);
-        if (!updated)
-        {
-            return NotFound();
-        }
-
-        return NoContent();
-    }
-
-    [HttpPost("{id:guid}/review/request-adjustments")]
-    public async Task<IActionResult> RequestAdjustmentsAsync(
-        Guid id,
-        [FromBody] RequestPartnerCustomerAdjustmentsRequest request,
-        CancellationToken cancellationToken)
-    {
-        var updated = await _service.RequestAdjustmentsAsync(id, request, cancellationToken);
-        if (!updated)
-        {
-            return NotFound();
-        }
-
-        return NoContent();
-    }
-    [HttpPost("{id:guid}/convert")]
-    public async Task<ActionResult<ConvertPartnerCustomerResponse>> ConvertToCustomerAsync(
-        Guid id,
-        [FromBody] ConvertPartnerCustomerRequest request,
-        CancellationToken cancellationToken)
-    {
-        var response = await _service.ConvertToCustomerAsync(id, request, cancellationToken);
-        if (response is null)
-        {
-            return NotFound();
-        }
-return Ok(response);
     }
 }
